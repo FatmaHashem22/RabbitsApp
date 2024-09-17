@@ -8,7 +8,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.rabbitsapp.data.Rabbit
 import com.example.rabbitsapp.data.RabbitsApi
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,11 +26,13 @@ class MainViewModel @Inject constructor (
     }
 
     fun getRandomRabbit() {
+
         viewModelScope.launch {
+
             try {
 
-                _state.value.copy(isLoading = true)
-                _state.value.copy(
+                _state.value = _state.value.copy(isLoading = true)
+                _state.value = _state.value.copy(
                     rabbit = api.getRandomRabbit(),
                     isLoading = false
                 )
