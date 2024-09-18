@@ -51,6 +51,8 @@ class MainActivity : ComponentActivity() {
                     val rabbit = viewModel.state.value.rabbit
                     val isLoading = viewModel.state.value.isLoading
 
+                    println("Before Committing")
+
                     rabbit?.let {
                         Image(
                             painter = rememberImagePainter(data = rabbit.imageUrl)
